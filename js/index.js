@@ -2,11 +2,35 @@ let cityForm = document.getElementById("city-form");
 let cityName = document.getElementById("city-name");
 let selectCity = document.getElementById("select-city");
 
+let citiesList = ['rosario', 'buenos aires', 'cordoba'];
+
+initOptionSelect();
+
 function showAddCity() {
     cityForm.style.display = 'block';
 }
 
-// selectArr = JSON.parse(localStorage.getItem("selectArr"));
+function initOptionSelect(){
+    if (citiesList.length != 0) {
+        for (city of citiesList) {
+            selectCity.options.add(new Option(city, city));
+        }
+    }
+}
+
+/*
+Parser arreglo a string:-
+
+JSON.stringify(names)
+
+Parsear string a arreglo
+
+JSON.parse(localStorage.getItem(‘CITIES’))
+
+localStorage.setItem("CITIES", JSON.stringify(citiesList));
+
+
+*/
 
 function addNewCity() {
     if (optionsValidateCityName()) {
@@ -24,40 +48,32 @@ function addNewCity() {
     }
 }
 
-function optionsValidateCityName() {
-    for (i = 0; i < selectCity.length; ++i) {
-        console.log(selectCity.options[i].value);
-        if (selectCity.options[i].value == cityName.value) {
+function optionsValidateCityName(cityValue) {
+    return (citiesList.indexOf(cityValue) != -1);
+   /* for (i = 0; i < selectCity.length; ++i) {
+        let valor = selectCity.options[i].value;
+        console.log(valor);
+        if (selectCity.options[i] == cityName.value) {
             alert('La ciudad ya ha sido cargada anteriormente.');
             return false;
         } else {
             return true;
         }
     }
-}
+*/}
 
 function displayError() {
     alert('La ciudad no se encuentra en la base de datos.');
 }
 
 function addCity() {
-    let newOption = document.createElement('option');
-    newOption.text = cityName.value.toUpperCase()
-    selectCity.appendChild(newOption);
+    let newOption = cityName.value;
+    /*agregar nueva ciudad en el arreglo citiesList*/
+    selectCity.options.add(new Option(newOption, newOption));
     cityForm.style.display = 'none';
-    cityName.value = "";
-    alert('Se ha cargado con exito!');
+    alert('se ha cargado');
 }
 
-// function saveData() {
-//     selectArr = [];
-//     for (var i = 0; i < cityName.options.length; i++) {
-//       if (cityName[i].value != "") {
-//         selectArr.push(cityName[i].text);
-//       }
-//     }
-//     localStorage.setItem("selectArr", JSON.stringify(selectArr));
-//   }
 
 function deleteCity() {
     cityName.remove(cityName.selectedIndex);
