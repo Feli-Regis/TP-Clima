@@ -24,15 +24,24 @@ function addNewCity() {
     }
 }
 
+function validateInput() {
+    if (!cityName.value) {
+      alert("Ingrese el nombre de la ciudad");
+      return false;
+    }
+    return true;
+  }
+
 function optionsValidateCityName() {
-    for (i = 0; i < selectCity.length; ++i) {
-        console.log(selectCity.options[i].value);
-        if (selectCity.options[i].value == cityName.value) {
-            alert('La ciudad ya ha sido cargada anteriormente.');
-            return false;
-        } else {
-            return true;
+    if (validateInput()) {
+        for (i = 0; i < selectCity.length; ++i) {
+            // console.log(selectCity.options[i].value);
+            if (selectCity.options[i].value == cityName.value) {
+                alert('La ciudad ya ha sido cargada anteriormente.');
+                return false;
+            }
         }
+        return true;
     }
 }
 
