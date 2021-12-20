@@ -30,6 +30,10 @@ body {
 
 }
 
+#city-weather{
+    display: none;
+}
+
 #def-option{
     color:darkgray;
     text-transform: none;

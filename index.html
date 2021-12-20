@@ -15,12 +15,12 @@
 <body>
     <div class="container" id="weather-form">
         <select name="select-city" class="select-city" id="select-city">
-            <option id="def-option" value="" disabled selected>INGRESAR CIUDAD</option>
+            <option id="def-option" value="" disabled selected>--Seleccione ciudad--</option>
         </select>
         <div class="buttons">
             <button title="Agregar Ciudad" onclick=showAddCity()><i class="fas fa-plus" id="new-city"></i></button>
             <button title="Borrar Ciudad" onclick="deleteCity()"><i class="fas fa-trash-alt"></i></button>
-            <button title="Mostrar Clima"><i class="fas fa-cloud-sun"></i></button>
+            <button title="Mostrar Clima" onclick="showCityWeather()"><i class="fas fa-cloud-sun"></i></button>
         </div>
     </div>
     <div class="container" id="city-form">
@@ -32,6 +32,9 @@
                 <button type="button" onclick="addNewCity()">Cargar</button>
             </div>
         </form>
+    </div>
+    <div class="container" id="city-weather">
+        
     </div>
 </body>
 
