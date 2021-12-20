@@ -87,7 +87,7 @@ function showCityWeather() {
 }
 
 
-function dumpData() {
+function dumpData(data) {
 
 }
 
