@@ -22,20 +22,6 @@ function initOptionSelect() {
     }
 }
 
-/*
-Parser arreglo a string:-
-
-JSON.stringify(names)
-
-Parsear string a arreglo
-
-JSON.parse(localStorage.getItem(‘CITIES’))
-
-localStorage.setItem("CITIES", JSON.stringify(citiesList));
-
-
-*/
-
 function addNewCity() {
     if (optionsValidateCityName(cityName.value)) {
         fetch("https://api.openweathermap.org/data/2.5/weather?q=" + cityName.value + "&appid=3936d0749fdc3124c6566ed26cf11978&units=metric&lang=es")
@@ -56,17 +42,7 @@ function addNewCity() {
 
 function optionsValidateCityName(cityValue) {
     return (citiesList.indexOf(cityValue.toLowerCase()) == -1);
-   /* for (i = 0; i < selectCity.length; ++i) {
-        let valor = selectCity.options[i].value;
-        console.log(valor);
-        if (selectCity.options[i] == cityName.value) {
-            alert('La ciudad ya ha sido cargada anteriormente.');
-            return false;
-        } else {
-            return true;
-        }
-    }
-*/}
+}
 
 function displayError() {
     alert('La ciudad no se encuentra en la base de datos.');
@@ -77,16 +53,15 @@ function addCity() {
     citiesList.push(newOption);
     let parseCities = JSON.stringify(citiesList);
     localStorage.setItem("CITIES", parseCities);
-    /*agregar nueva ciudad en el arreglo citiesList*/
     selectCity.options.add(new Option(newOption, newOption));
+    cityName.value = "";
     cityForm.style.display = 'none';
-    alert('se ha cargado');
+    alert('Se ha cargado con exito.');
 }
-
 
 function deleteCity() {
     if (selectCity.selectedIndex == 0) {
-        alert('No ha seleccionado ninguna ciudad');
+        alert('No ha seleccionado ninguna ciudad.');
     } else {
         selectCity.remove(selectCity.selectedIndex);
         citiesList = [];
@@ -99,3 +74,8 @@ function deleteCity() {
         alert("La ciudad fue eliminada.");
     }
 }
+
+
+
+
+
