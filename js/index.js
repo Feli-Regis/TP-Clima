@@ -75,7 +75,19 @@ function deleteCity() {
     }
 }
 
+function showCityWeather() {
+    if (selectCity.value != "") {
+        fetch("https://api.openweathermap.org/data/2.5/weather?q=" + selectCity.value + "&appid=3936d0749fdc3124c6566ed26cf11978&units=metric&lang=es")
+            .then((response) => response.json())
+            .then((data) => dumpData(data))
+            .catch((error) => {
+                console.error(error);
+            });
+    }
+}
 
 
+function dumpData() {
 
+}
 
