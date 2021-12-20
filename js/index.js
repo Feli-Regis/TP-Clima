@@ -3,14 +3,18 @@ let cityName = document.getElementById("city-name");
 let selectCity = document.getElementById("select-city");
 
 let citiesList = ['rosario', 'buenos aires', 'cordoba'];
-
+let localList = JSON.parse(localStorage.getItem('CITIES'));
 initOptionSelect();
 
 function showAddCity() {
     cityForm.style.display = 'block';
 }
 
-function initOptionSelect(){
+function initOptionSelect() {
+    if (localList != null) {
+        citiesList = [];
+        citiesList = citiesList.concat(localList);
+    }
     if (citiesList.length != 0) {
         for (city of citiesList) {
             selectCity.options.add(new Option(city, city));
@@ -33,7 +37,7 @@ localStorage.setItem("CITIES", JSON.stringify(citiesList));
 */
 
 function addNewCity() {
-    if (optionsValidateCityName()) {
+    if (optionsValidateCityName(cityName.value)) {
         fetch("https://api.openweathermap.org/data/2.5/weather?q=" + cityName.value + "&appid=3936d0749fdc3124c6566ed26cf11978&units=metric&lang=es")
             .then((response) => {
                 if (response.ok) {
@@ -45,29 +49,13 @@ function addNewCity() {
             .catch((error) => {
                 console.error(error);
             });
+    } else {
+        alert('La ciudad ya se encuentra cargada');
     }
 }
 
-<<<<<<< HEAD
-function validateInput() {
-    if (!cityName.value) {
-      alert("Ingrese el nombre de la ciudad");
-      return false;
-    }
-    return true;
-  }
-
-function optionsValidateCityName() {
-    if (validateInput()) {
-        for (i = 0; i < selectCity.length; ++i) {
-            // console.log(selectCity.options[i].value);
-            if (selectCity.options[i].value == cityName.value) {
-                alert('La ciudad ya ha sido cargada anteriormente.');
-                return false;
-            }
-=======
 function optionsValidateCityName(cityValue) {
-    return (citiesList.indexOf(cityValue) != -1);
+    return (citiesList.indexOf(cityValue.toLowerCase()) == -1);
    /* for (i = 0; i < selectCity.length; ++i) {
         let valor = selectCity.options[i].value;
         console.log(valor);
@@ -76,7 +64,6 @@ function optionsValidateCityName(cityValue) {
             return false;
         } else {
             return true;
->>>>>>> 08b3f48d9ddfbec902b761e38b9da79773b8c725
         }
         return true;
     }
@@ -87,7 +74,10 @@ function displayError() {
 }
 
 function addCity() {
-    let newOption = cityName.value;
+    let newOption = cityName.value.toLowerCase();
+    citiesList.push(newOption);
+    let parseCities = JSON.stringify(citiesList);
+    localStorage.setItem("CITIES", parseCities);
     /*agregar nueva ciudad en el arreglo citiesList*/
     selectCity.options.add(new Option(newOption, newOption));
     cityForm.style.display = 'none';
@@ -96,6 +86,17 @@ function addCity() {
 
 
 function deleteCity() {
-    cityName.remove(cityName.selectedIndex);
-    alert("La ciudad fue eliminada.");
+    if (selectCity.selectedIndex == 0) {
+        alert('No ha seleccionado ninguna ciudad');
+    } else {
+        selectCity.remove(selectCity.selectedIndex);
+        citiesList = [];
+        for (city of selectCity.options) {
+            if (city.value != "" && city.value != "INGRESAR CIUDAD") {
+                citiesList.push(city.value);
+            }
+        }
+        localStorage.setItem('CITIES', JSON.stringify(citiesList));
+        alert("La ciudad fue eliminada.");
+    }
 }
