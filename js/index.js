@@ -1,12 +1,14 @@
 let cityForm = document.getElementById("city-form");
 let cityName = document.getElementById("city-name");
 let selectCity = document.getElementById("select-city");
+let cityWeather = document.getElementById("city-weather");
 
 let citiesList = ['rosario', 'buenos aires', 'cordoba'];
 let localList = JSON.parse(localStorage.getItem('CITIES'));
 initOptionSelect();
 
 function showAddCity() {
+    cityWeather.style.display = 'none';
     cityForm.style.display = 'block';
 }
 
@@ -77,12 +79,16 @@ function deleteCity() {
 
 function showCityWeather() {
     if (selectCity.value != "") {
+        cityForm.style.display = 'none';
+        cityWeather.style.display = 'block';
         fetch("https://api.openweathermap.org/data/2.5/weather?q=" + selectCity.value + "&appid=3936d0749fdc3124c6566ed26cf11978&units=metric&lang=es")
             .then((response) => response.json())
             .then((data) => dumpData(data))
             .catch((error) => {
                 console.error(error);
             });
+    }else{
+        alert('No ha seleccionado ninguna ciudad.')
     }
 }
 
