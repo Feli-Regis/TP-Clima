@@ -33,11 +33,11 @@ body {
 #city-weather{
     display: none;
 }
-
 #def-option{
     color:darkgray;
     text-transform: none;
 }
+
 .select-city {
     text-transform: capitalize;
 }
