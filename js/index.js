@@ -9,15 +9,16 @@ initOptionSelect();
 
 function showAddCity() {
     cityWeather.style.display = 'none';
-    cityForm.style.display = 'block';
+    cityForm.style.display = 'flex';
+    cityForm.style.display = 'flex';
 }
 
 function initOptionSelect() {
-    if (localList != null) {
+    if (localList != 0) {
         citiesList = [];
         citiesList = citiesList.concat(localList);
     }
-    if (citiesList.length != 0) {
+    if (citiesList.length != 0 || localList == 0) {
         for (city of citiesList) {
             selectCity.options.add(new Option(city, city));
         }
@@ -110,7 +111,7 @@ function dumpData(data) {
     document.getElementById("temp-min").innerText = "min " + temp_min.toFixed(1) + "°";
     document.getElementById("temp-max").innerText = "max " + temp_max.toFixed(1) + "°";
     document.getElementById("feels-like").innerText =
-    "Sensación térmica: " + feels_like.toFixed(1) + "C°";
+        "Sensación térmica: " + feels_like.toFixed(1) + "C°";
     document.getElementById("humidity").innerText = "Humedad: " + humidity + "%";
     document.getElementById("pressure").innerText = "Presión: " + pressure + " mb";
     document.getElementById("visibility").innerText = "Visibilidad: " + visibility / 1000 + " Km";

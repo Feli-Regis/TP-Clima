@@ -19,9 +19,15 @@ body {
 
 #city-form {
     display: none;
-    width: 80vh;
-    height: 60vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 320px;
+    height: 90px;
+    background: rgba(243, 246, 246, 0.8) 100%;
     border-radius: 9px;
+    box-shadow: 0px 2px 10px gray;
+
 }
 
 .container1 {
@@ -31,24 +37,39 @@ body {
 
 .item-form {
     text-align: center;
+    padding: 2%;
+}
+
+.item-form ::placeholder {
+    color: rgba(134, 128, 128, 0.411);
+    text-align: center;
 }
 
 #weather-form {
     display: flex;
+    margin: 5vh;
 }
 
-#def-option{
-    color:darkgray;
+#def-option {
+    color: darkgray;
     text-transform: none;
 }
 
 .select-city {
     text-transform: capitalize;
+    box-shadow: 0px 2px 10px grey;
+    cursor: pointer;
+}
+
+button{
+    cursor: pointer;
 }
 
 .buttons {
     display: grid;
     grid-template-columns: auto auto auto;
+    border-radius: 10%;
+    box-shadow: 0px 2px 10px grey;
 }
 
 .buttons i {
@@ -56,7 +77,13 @@ body {
     margin: 10px;
 }
 
-.container#city-weather{
+#load-button {
+    padding: 5%;
+    border-radius: 10%;
+    box-shadow: 0px 2px 10px grey;
+}
+
+.container#city-weather {
     display: none;
     width: 80vh;
     height: 60vh;
@@ -71,14 +98,14 @@ body {
     font-size: 1em;
 }
 
-.main{
+.main {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content:space-between;
+    justify-content: space-between;
 }
 
-#city-name{
+#city-name {
     color: rgb(0, 0, 0);
 }
 
@@ -155,7 +182,7 @@ body {
         height: 150vh;
     }
 
-    .container#city-weather{
+    .container#city-weather {
         width: 37vh;
         height: 54vh;
     }
@@ -168,7 +195,7 @@ body {
     #left-display,
     #footer-display,
     #right-display {
-    margin: 0em;
+        margin: 0em;
     }
 
     #right-display {
@@ -187,12 +214,12 @@ body {
     #description {
         font-size: 1em;
         margin-bottom: 0.5em;
-        
+
     }
 
     #temp-min,
     #temp-max {
-    font-size: 1em;
+        font-size: 1em;
     }
 
     #icon {
@@ -207,10 +234,5 @@ body {
     #footer-display {
         margin-top: 1.3em;
     }
-    
+
 }
-
-
-
-
-
