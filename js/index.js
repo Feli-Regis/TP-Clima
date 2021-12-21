@@ -9,7 +9,6 @@ initOptionSelect();
 
 function showAddCity() {
     cityWeather.style.display = 'none';
-    cityWeather.style.display = "none";
     cityForm.style.display = 'block';
 }
 
@@ -82,8 +81,6 @@ function showCityWeather() {
     if (selectCity.value != "") {
         cityForm.style.display = 'none';
         cityWeather.style.display = 'block';
-        cityForm.style.display = "none"
-        cityWeather.style.display = "block"
         fetch("https://api.openweathermap.org/data/2.5/weather?q=" + selectCity.value + "&appid=3936d0749fdc3124c6566ed26cf11978&units=metric&lang=es")
             .then((response) => response.json())
             .then((data) => dumpData(data))
@@ -104,8 +101,7 @@ function dumpData(data) {
     cityWeather.style.display = "block";
 
     document.getElementById("intro").innerText = "El clima en";
-    document.getElementById("city-name").innerText = name;
-    console.log(name + country);
+    document.getElementById("city").innerText = name + ", " + country;
     document.getElementById("date").innerHTML = getDate(timezone);
     document.getElementById("temp").innerText = temp.toFixed(1) + "°C";
     document.getElementById("icon").src = "http://openweathermap.org/img/wn/" + icon + "@4x.png";
