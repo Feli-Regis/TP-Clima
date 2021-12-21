@@ -14,7 +14,7 @@ function showAddCity() {
 }
 
 function initOptionSelect() {
-    if (localList != 0) {
+    if (localList != null && localList != 0) {
         citiesList = [];
         citiesList = citiesList.concat(localList);
     }
