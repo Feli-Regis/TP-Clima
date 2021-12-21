@@ -9,6 +9,7 @@ initOptionSelect();
 
 function showAddCity() {
     cityWeather.style.display = 'none';
+    cityWeather.style.display = "none";
     cityForm.style.display = 'block';
 }
 
@@ -81,6 +82,8 @@ function showCityWeather() {
     if (selectCity.value != "") {
         cityForm.style.display = 'none';
         cityWeather.style.display = 'block';
+        cityForm.style.display = "none"
+        cityWeather.style.display = "block"
         fetch("https://api.openweathermap.org/data/2.5/weather?q=" + selectCity.value + "&appid=3936d0749fdc3124c6566ed26cf11978&units=metric&lang=es")
             .then((response) => response.json())
             .then((data) => dumpData(data))
@@ -92,8 +95,28 @@ function showCityWeather() {
     }
 }
 
-
 function dumpData(data) {
-
+    const { name } = data;
+    const { description, icon } = data.weather[0];
+    const { temp, humidity, feels_like, pressure, temp_max, temp_min } = data.main;
+    result.style.display = "block";
+    document.getElementById("icon").src = "http://openweathermap.org/img/wn/" + icon + "@4x.png";
+    document.getElementById("tiempo").innerText = "TIEMPO EN";
+    document.getElementById("city").innerText = name;
+    document.getElementById("date").innerHTML = getDate();
+    document.getElementById("temp").innerText = temp.toFixed(1) + "°C";
+    document.getElementById("description").innerText = description;
+    document.getElementById("humidity").innerText = "Humedad: " + humidity + "%";
+    document.getElementById("sen-term").innerText =
+      "Sensación térmica: " + feels_like.toFixed(1) + "C°";
+    document.getElementById("pressure").innerText = "Presión: " + pressure + " mb";
+    document.getElementById("temp-min").innerText = temp_min.toFixed(1) + "°/ ";
+    document.getElementById("temp-max").innerText = temp_max.toFixed(1) + "°";
 }
+
+function getDate() {
+    var today = new Date();
+    var time = today.getHours() + ":" + today.getMinutes();
+    return "Hasta las " + time;
+  }
 
