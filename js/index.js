@@ -18,7 +18,7 @@ function initOptionSelect() {
         citiesList = [];
         citiesList = citiesList.concat(localList);
     }
-    if (citiesList.length != 0 || localList == 0) {
+    if (citiesList.length != 0 || localList == 0 || localList == null) {
         for (city of citiesList) {
             selectCity.options.add(new Option(city, city));
         }
