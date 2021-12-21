@@ -149,6 +149,67 @@ body {
     color: rgba(0, 0, 0, 0.6);
 }
 
+@media only screen and (max-width: 812px) {
+
+    body {
+        height: 150vh;
+    }
+
+    .container#city-weather{
+        width: 37vh;
+        height: 54vh;
+    }
+
+    .buttons i {
+        font-size: 1.5em;
+        margin: 10px;
+    }
+
+    #left-display,
+    #footer-display,
+    #right-display {
+    margin: 0em;
+    }
+
+    #right-display {
+        text-align: right;
+    }
+
+    #temp {
+        font-size: 2.3em;
+        font-weight: 600;
+    }
+
+    #city {
+        font-size: 1.3em;
+    }
+
+    #description {
+        font-size: 1em;
+        margin-bottom: 0.5em;
+        
+    }
+
+    #temp-min,
+    #temp-max {
+    font-size: 1em;
+    }
+
+    #icon {
+        font-size: 0.7em;
+    }
+
+    .buttons i {
+        font-size: 1.1em;
+        margin: 10px;
+    }
+
+    #footer-display {
+        margin-top: 1.3em;
+    }
+    
+}
+
 
 
 
