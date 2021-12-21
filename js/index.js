@@ -8,6 +8,7 @@ let localList = JSON.parse(localStorage.getItem('CITIES'));
 initOptionSelect();
 
 function showAddCity() {
+    cityWeather.style.display = 'none';
     cityWeather.style.display = "none";
     cityForm.style.display = 'block';
 }
@@ -79,6 +80,8 @@ function deleteCity() {
 
 function showCityWeather() {
     if (selectCity.value != "") {
+        cityForm.style.display = 'none';
+        cityWeather.style.display = 'block';
         cityForm.style.display = "none"
         cityWeather.style.display = "block"
         fetch("https://api.openweathermap.org/data/2.5/weather?q=" + selectCity.value + "&appid=3936d0749fdc3124c6566ed26cf11978&units=metric&lang=es")
@@ -87,6 +90,8 @@ function showCityWeather() {
             .catch((error) => {
                 console.error(error);
             });
+    }else{
+        alert('No ha seleccionado ninguna ciudad.')
     }
 }
 
