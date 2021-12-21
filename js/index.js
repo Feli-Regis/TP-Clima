@@ -90,33 +90,39 @@ function showCityWeather() {
             .catch((error) => {
                 console.error(error);
             });
-    }else{
+    } else {
         alert('No ha seleccionado ninguna ciudad.')
     }
 }
 
 function dumpData(data) {
-    const { name } = data;
+    const { country } = data.sys;
+    const { name, timezone, visibility } = data;
     const { description, icon } = data.weather[0];
     const { temp, humidity, feels_like, pressure, temp_max, temp_min } = data.main;
-    result.style.display = "block";
-    document.getElementById("icon").src = "http://openweathermap.org/img/wn/" + icon + "@4x.png";
-    document.getElementById("tiempo").innerText = "TIEMPO EN";
-    document.getElementById("city").innerText = name;
-    document.getElementById("date").innerHTML = getDate();
+
+    cityWeather.style.display = "block";
+
+    document.getElementById("intro").innerText = "El clima en";
+    document.getElementById("city-name").innerText = name;
+    console.log(name + country);
+    document.getElementById("date").innerHTML = getDate(timezone);
     document.getElementById("temp").innerText = temp.toFixed(1) + "°C";
+    document.getElementById("icon").src = "http://openweathermap.org/img/wn/" + icon + "@4x.png";
     document.getElementById("description").innerText = description;
+    document.getElementById("temp-min").innerText = "min " + temp_min.toFixed(1) + "°";
+    document.getElementById("temp-max").innerText = "max " + temp_max.toFixed(1) + "°";
+    document.getElementById("feels-like").innerText =
+    "Sensación térmica: " + feels_like.toFixed(1) + "C°";
     document.getElementById("humidity").innerText = "Humedad: " + humidity + "%";
-    document.getElementById("sen-term").innerText =
-      "Sensación térmica: " + feels_like.toFixed(1) + "C°";
     document.getElementById("pressure").innerText = "Presión: " + pressure + " mb";
-    document.getElementById("temp-min").innerText = temp_min.toFixed(1) + "°/ ";
-    document.getElementById("temp-max").innerText = temp_max.toFixed(1) + "°";
+    document.getElementById("visibility").innerText = "Visibilidad: " + visibility / 1000 + " Km";
 }
 
-function getDate() {
-    var today = new Date();
-    var time = today.getHours() + ":" + today.getMinutes();
-    return "Hasta las " + time;
-  }
+function getDate(timezone) {
+    const timezoneInMinutes = timezone / 60;
+    const currTime = moment().utcOffset(timezoneInMinutes).format("h:mm A");
+    console.log(currTime);
+    return "Hora actual " + currTime;
+}
 
