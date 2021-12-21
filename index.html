@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="js/index.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
 </head>
 
 <body>
@@ -34,16 +35,26 @@
         </form>
     </div>
     <div class="container" id="city-weather">
-        <div id="left-display">
-            <div id="intro">El clima en</div>
-            <div id="city-name"></div>
-            <div id="temp"></div>
-            <div id="date"></div>
+        <div class="main">
+            <div id="left-display">
+                <div id="intro"></div>
+                <h1 id="city-name"></h1>
+                <div id="temp"></div>
+                <div id="date"></div>
+            </div>
+            <div id="right-display">
+                <i id="icon"></i>
+                <div id="description"></div>
+                <h2 id="temp-min"></h2>
+                <h2 id="temp-max"></h2>
+            </div>
         </div>
-        <div id="right-display">
-
+        <div id="footer-display">
+            <div id="feels-like"></div>
+            <div id="humidity"></div>
+            <div id="pressure"></div>
+            <div id="visibility"></div>
         </div>
-
     </div>
 </body>
 

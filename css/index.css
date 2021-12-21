@@ -19,6 +19,12 @@ body {
 
 #city-form {
     display: none;
+    width: 80vh;
+    height: 60vh;
+    background: rgba(243, 246, 246, 0.8) 100%;
+    border-radius: 9px;
+    padding: 30px;
+    box-shadow: 0px 2px 10px gray;
 }
 
 .item-form {
@@ -27,12 +33,6 @@ body {
 
 #weather-form {
     display: flex;
-
-}
-
-#city-weather{
-    display: none;
-    background-color:lightseagreen;
 }
 #def-option{
     color:darkgray;
@@ -51,4 +51,26 @@ body {
 .buttons i {
     font-size: 20px;
     margin: 10px;
+}
+
+.container#city-weather{
+    display: none;
+    width: 80vh;
+    height: 60vh;
+    background: rgba(243, 246, 246, 0.8) 100%;
+    border-radius: 9px;
+    padding: 30px;
+    box-shadow: 0px 2px 10px gray;
+}
+
+.main{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-between;
+}
+
+#city-name{
+    font-size: 300;
+    color: black;
 }
