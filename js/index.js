@@ -74,6 +74,7 @@ function deleteCity() {
         }
         localStorage.setItem('CITIES', JSON.stringify(citiesList));
         alert("La ciudad fue eliminada.");
+        cityWeather.style.display = 'none';
     }
 }
 
@@ -102,7 +103,7 @@ function dumpData(data) {
 
     document.getElementById("intro").innerText = "El clima en";
     document.getElementById("city").innerText = name + ", " + country;
-    document.getElementById("date").innerHTML = getDate(timezone);
+    document.getElementById("date").innerHTML = getCurrTime(timezone);
     document.getElementById("temp").innerText = temp.toFixed(1) + "°C";
     document.getElementById("icon").src = "http://openweathermap.org/img/wn/" + icon + "@4x.png";
     document.getElementById("description").innerText = description;
@@ -115,7 +116,7 @@ function dumpData(data) {
     document.getElementById("visibility").innerText = "Visibilidad: " + visibility / 1000 + " Km";
 }
 
-function getDate(timezone) {
+function getCurrTime(timezone) {
     const timezoneInMinutes = timezone / 60;
     const currTime = moment().utcOffset(timezoneInMinutes).format("h:mm A");
     console.log(currTime);
